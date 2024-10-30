@@ -20,7 +20,7 @@ class UserController extends Controller
     }
 	public function index(UserIndexRequest $request)
 	{
-        $users = User::query()->paginate($request->count);
+        $users = User::query()->orderBy('created_at', 'desc')->paginate($request->count);
         if (count(UserIndexResource::collection($users)->resolve())) {
             return response()->json([
                 'success' => true,
