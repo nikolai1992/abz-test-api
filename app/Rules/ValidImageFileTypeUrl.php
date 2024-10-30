@@ -20,7 +20,6 @@ class ValidImageFileTypeUrl implements Rule
 
         // Validate Content-Type header for image
         if (
-            $headers['Content-Type'] == 'image/png' ||
             $headers['Content-Type'] == 'image/jpg' ||
             $headers['Content-Type'] == 'image/jpeg'
         ) {
@@ -32,6 +31,6 @@ class ValidImageFileTypeUrl implements Rule
     }
     public function message()
     {
-        return 'Photo must be in a valid image format (jpg, png, jpeg).';
+        return 'Photo must be in a valid image format (jpg, jpeg).';
     }
 }
