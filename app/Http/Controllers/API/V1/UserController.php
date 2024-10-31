@@ -1,15 +1,15 @@
 <?php
 
-namespace App\Http\Controllers\API;
+namespace App\Http\Controllers\API\V1;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\UserIndexRequest;
 use App\Http\Requests\UserStoreRequest;
 use App\Http\Resources\UserIndexResource;
+use App\Models\Token;
 use App\Models\User;
 use App\Services\TinypngAPIService;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Validator;
 
 class UserController extends Controller
 {
@@ -49,6 +49,7 @@ class UserController extends Controller
         $data['photo'] = $photoPath;
         $data['password'] = Hash::make('password');
         $user = User::create($data);
+        Token::first()->delete();
 
         return response()->json([
             'success' => true,

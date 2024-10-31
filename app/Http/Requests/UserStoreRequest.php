@@ -2,10 +2,8 @@
 
 namespace App\Http\Requests;
 
-use App\Rules\ValidImageSizeUrl;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Contracts\Validation\Validator;
-use App\Rules\ValidImageFileTypeUrl;
 
 class UserStoreRequest extends FormRequest
 {
@@ -16,7 +14,7 @@ class UserStoreRequest extends FormRequest
             'email' => 'required|email|unique:users,email|max:255',
             'phone' => 'required|regex:/^\+380\d{9}$/|unique:users,phone',
             'position_id' => 'required|integer',
-            'photo' =>  ['required', 'url', new ValidImageFileTypeUrl(), new ValidImageSizeUrl()],
+            'photo' =>  'required|mimes:jpeg,jpg|max:5120|image|dimensions:min_width=70,min_height=70',
 		];
 	}
 

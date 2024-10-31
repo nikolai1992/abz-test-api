@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Http\Controllers\API;
+namespace App\Http\Controllers\API\V1;
 
 use App\Http\Controllers\Controller;
 use App\Models\Token;
 use Carbon\Carbon;
 use Illuminate\Support\Str;
 
-class AuthController extends Controller
+class TokenController extends Controller
 {
 	public function getToken()
 	{
